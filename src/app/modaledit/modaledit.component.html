@@ -1,0 +1,68 @@
+<ng-template #content let-modal>
+
+    <ng-container *ngIf="!loader">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Customize Url</h4>
+            <button type="button" class="close" aria-label="Close" (click)="update();modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Domain</span>
+                    </div>
+                    <input id="title" class="form-control" value="nodeshorturl.herokuapp.com" aria-label="Username" aria-describedby="basic-addon1" readonly>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Shortened URL</span>
+                </div>
+                <input class="form-control" [value]="shortUrl" aria-label="Username" aria-describedby="basic-addon1" readonly>
+            </div>
+            <br>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Customize URl</span>
+                </div>
+                <input class="form-control" [(ngModel)]="shortUrlEnd" aria-label="Username" aria-describedby="basic-addon1">
+                <br>
+            </div>
+            <span [ngClass]="{'success':success==1,'failure':success==0}">{{message}}</span>
+        </div>
+        <div class="modal-footer" *ngIf="!finished">
+            <button type="button" class="btn btn-outline-dark" (click)="update();modal.dismiss('Cross click')">No Thanks</button>
+            <button type="button" class="btn btn-outline-dark" (click)="createCustomUrl();" [disabled]="shortUrlEnd==''">Create Custom url</button>
+            <!-- {{obj.title}} {{obj.type}} {{obj.content}} {{obj.mentorInst}} modal.close('save click')-->
+        </div>
+        <div class="modal-footer" *ngIf="finished">
+            <button type="button" class="btn btn-outline-primary" (click)="update();modal.dismiss('Cross click')">Save</button>
+            <!-- {{obj.title}} {{obj.type}} {{obj.content}} {{obj.mentorInst}} -->
+        </div>
+    </ng-container>
+    <ng-container *ngIf="loader">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Shorten URL</h4>
+            <button type="button" class="close" aria-label="Close" (click)="update();modal.dismiss('Cross click')">
+  <span aria-hidden="true">&times;</span>
+</button>
+        </div>
+        <div class="modal-body text-center">
+            <div class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+    </ng-container>
+</ng-template>
+<button class="btn btn-outline-warning btn-sm pl-2 pr-2" (click)="open(content)">
+     Edit</button>
