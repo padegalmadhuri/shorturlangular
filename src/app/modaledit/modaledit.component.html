@@ -33,8 +33,8 @@
             <span [ngClass]="{'success':success==1,'failure':success==0}">{{message}}</span>
         </div>
         <div class="modal-footer" *ngIf="!finished">
-            <button type="button" class="btn btn-outline-dark" (click)="update();modal.dismiss('Cross click')">No Thanks</button>
-            <button type="button" class="btn btn-outline-dark" (click)="createCustomUrl();" [disabled]="shortUrlEnd==''">Create Custom url</button>
+            <button type="button" class="btn btn-outline-primary" (click)="update();modal.dismiss('Cross click')">No Thanks</button>
+            <button type="button" class="btn btn-outline-primary" (click)="createCustomUrl();" [disabled]="shortUrlEnd==''">Create Custom url</button>
             <!-- {{obj.title}} {{obj.type}} {{obj.content}} {{obj.mentorInst}} modal.close('save click')-->
         </div>
         <div class="modal-footer" *ngIf="finished">
